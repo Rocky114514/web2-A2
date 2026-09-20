@@ -1,0 +1,13 @@
+{
+  "name": "web2-a2-charity-events",
+  "version": "1.0.0",
+  "description": "PROG2002 A2 — 'Passing the Torch' charity events website (client + API)",
+  "private": true,
+  "scripts": {
+    "setup:api": "cd api && npm install",
+    "api": "cd api && npm start",
+    "client": "cd client && npx serve"
+  },
+  "author": "Rocky114514",
+  "license": "MIT"
+}
