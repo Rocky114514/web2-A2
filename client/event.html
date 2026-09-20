@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Event details, tickets and registration for an Emberlight Foundation charity event.">
+    <title>Event Details — Emberlight Foundation</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ===================== Navigation (shared on all pages) ===================== -->
+    <header class="site-header">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand" aria-label="Emberlight Foundation home">
+                <svg class="brand-mark" viewBox="0 0 64 96" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="brandFlame" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#ffd166"/>
+                            <stop offset="0.55" stop-color="#ff9d2e"/>
+                            <stop offset="1" stop-color="#ff6a00"/>
+                        </linearGradient>
+                    </defs>
+                    <path class="flame-core" fill="url(#brandFlame)"
+                          d="M32 2 C19 22 6 36 6 58 a26 26 0 0 0 52 0 C58 36 45 22 32 2 Z"/>
+                    <path class="torch-inner" fill="#fff3d6" opacity="0.9"
+                          d="M32 26 C24 38 18 48 18 60 a14 14 0 0 0 28 0 C46 48 40 38 32 26 Z"/>
+                </svg>
+                <span class="brand-name">EMBERLIGHT <em>FOUNDATION</em></span>
+            </a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a class="nav-link" href="index.html">Home</a></li>
+                <li><a class="nav-link" href="search.html">Find an Event</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===================== Event hero (dynamic) ===================== -->
+        <section class="event-hero">
+            <div class="container event-hero__inner">
+                <span class="badge" id="eventBadge">Loading…</span>
+                <h1 class="event-title" id="eventTitle">Loading event…</h1>
+                <div class="event-meta" id="eventMeta"></div>
+            </div>
+        </section>
+
+        <!-- ===================== Detail layout ===================== -->
+        <section class="section">
+            <div class="container detail-layout">
+
+                <!-- Left column: description + purpose. -->
+                <div class="detail-main">
+                    <div class="panel">
+                        <h2 class="panel__title">About this event</h2>
+                        <p class="lead" id="eventDescription"></p>
+                    </div>
+                    <div class="panel">
+                        <h2 class="panel__title">Why it matters</h2>
+                        <p id="eventPurpose"></p>
+                    </div>
+                </div>
+
+                <!-- Right column: progress + tickets + host. -->
+                <div class="detail-side">
+                    <div class="panel">
+                        <h2 class="panel__title">Goal vs. Progress</h2>
+                        <div class="goal-stats">
+                            <div>
+                                <div class="num raised" id="raisedAmount">—</div>
+                                <div class="cap">Raised</div>
+                            </div>
+                            <div>
+                                <div class="num" id="goalAmount">—</div>
+                                <div class="cap">Goal</div>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress__meta">
+                                <span id="progressLabel">0% funded</span>
+                                <span id="progressRemaining"></span>
+                            </div>
+                            <div class="progress__track">
+                                <div class="progress__fill" id="progressFill" style="width:0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h2 class="panel__title">Register for this event</h2>
+                        <!-- Registration form. The button is wired to the modal in
+                             event.js because purchase is delivered in Assessment 3. -->
+                        <form class="register-form" id="registerForm" novalidate>
+                            <div class="form-field">
+                                <label class="form-label" for="nameInput">Full name</label>
+                                <input class="form-control" type="text" id="nameInput" placeholder="e.g. Alex Morgan" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="emailInput">Email</label>
+                                <input class="form-control" type="email" id="emailInput" placeholder="you@example.com" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="ticketInput">Tickets</label>
+                                <input class="form-control" type="number" id="ticketInput" min="1" max="20" value="1" required>
+                            </div>
+                            <button type="submit" class="btn btn--primary">Register</button>
+                            <p class="note">Ticket price: <strong id="ticketPrice">—</strong> · 100% of proceeds fund this cause.</p>
+                        </form>
+                    </div>
+
+                    <div class="panel">
+                        <h2 class="panel__title">Hosted by</h2>
+                        <p class="lead" id="orgName"></p>
+                        <p id="orgMission"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===================== Register modal ===================== -->
+    <div class="modal" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal__dialog">
+            <span class="modal__flame" aria-hidden="true">🔥</span>
+            <h2 class="modal__title" id="modalTitle">Under construction</h2>
+            <p class="modal__text">This feature is currently under construction.</p>
+            <button type="button" class="btn btn--primary modal__close" id="modalClose">Got it</button>
+        </div>
+    </div>
+
+    <!-- ============================ Footer ============================ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="index.html" class="brand">
+                        <svg class="brand-mark" viewBox="0 0 64 96" aria-hidden="true">
+                            <path class="flame-core" fill="url(#brandFlame)"
+                                  d="M32 2 C19 22 6 36 6 58 a26 26 0 0 0 52 0 C58 36 45 22 32 2 Z"/>
+                        </svg>
+                        <span class="brand-name">EMBERLIGHT <em>FOUNDATION</em></span>
+                    </a>
+                    <p>Passing the Torch of Hope since 2011 — turning ordinary tickets into extraordinary acts of courage.</p>
+                </div>
+                <div class="footer__col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="search.html">Find an Event</a></li>
+                        <li><a href="index.html#mission">Our Mission</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:hello@emberlight.org.au">hello@emberlight.org.au</a></li>
+                        <li><a href="tel:1800555019">1800 555 019</a></li>
+                        <li><span>14 Lighthouse Way, Gold Coast QLD 4217</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>© 2026 Emberlight Foundation. A fictional charity for PROG2002 Assessment 2.</span>
+                <span>Built with HTML, CSS, JavaScript &amp; Node.js</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts. -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/event.js"></script>
+</body>
+</html>
