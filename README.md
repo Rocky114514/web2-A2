@@ -113,12 +113,12 @@ npx serve client
 | `GET` | `/api/events?category=&location=&date=` | Search active events by category id, location (partial match) and/or date (on-or-after). All filters optional. |
 | `GET` | `/api/events/:id` | Full detail for one event (with organisation, category and `is_past` flag). |
 | `GET` | `/api/categories` | Event categories for the filter dropdown. |
-| `GET` | `/api/locations` | Distinct cities of active events for the filter dropdown. |
+| `GET` | `/api/locations` | Distinct venues of active events for the filter dropdown. |
 
 Example:
 
 ```
-GET http://localhost:3000/api/events?category=1&location=Gold%20Coast&date=2026-10-01
+GET http://localhost:3000/api/events?category=1&location=Broadbeach&date=2026-10-01
 ```
 
 ---

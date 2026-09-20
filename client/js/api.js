@@ -62,7 +62,7 @@ function formatTime(value) {
 function formatPrice(price, currency = 'AUD') {
     const amount = Number(price);
     if (!amount || amount <= 0) return 'Free';
-    return `${currency} $${amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2)}`;
+    return `$${amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2)} ${currency}`;
 }
 
 /** "$31,250" — compact, comma-grouped money for goals and progress. */

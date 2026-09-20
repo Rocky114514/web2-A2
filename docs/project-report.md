@@ -67,7 +67,7 @@ Every route is a **noun** (a resource), and query parameters refine the resource
 | `GET /api/events` | searchable events | optional `category`, `location`, `date` filters |
 | `GET /api/events/:id` | one event | full detail incl. `is_past` flag |
 | `GET /api/categories` | categories | feeds the search dropdown |
-| `GET /api/locations` | distinct cities | feeds the search dropdown |
+| `GET /api/locations` | distinct venues | feeds the search dropdown |
 
 **RESTful & security considerations**
 

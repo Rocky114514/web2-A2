@@ -13,7 +13,7 @@
  *    GET /api/events        -> searchable events (category, location, date)
  *    GET /api/events/:id    -> full detail for a single event
  *    GET /api/categories    -> the event categories used by the filter form
- *    GET /api/locations     -> distinct cities used by the filter form
+ *    GET /api/locations     -> distinct venues used by the filter form
  * ============================================================================
  */
 
@@ -203,13 +203,13 @@ app.get('/api/categories', async (req, res, next) => {
 });
 
 // GET /api/locations
-// Supplies the distinct cities of active events for the location dropdown.
+// Supplies the distinct venues of active events for the location dropdown.
 app.get('/api/locations', async (req, res, next) => {
     try {
         const rows = await query(
-            'SELECT DISTINCT city FROM events WHERE is_suspended = 0 AND event_date >= NOW() ORDER BY city'
+            'SELECT DISTINCT venue FROM events WHERE is_suspended = 0 AND event_date >= NOW() ORDER BY venue'
         );
-        res.json({ success: true, count: rows.length, locations: rows.map(r => r.city) });
+        res.json({ success: true, count: rows.length, locations: rows.map(r => r.venue) });
     } catch (err) {
         next(err);
     }
