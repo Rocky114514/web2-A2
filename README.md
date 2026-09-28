@@ -25,7 +25,7 @@ ticket pricing, and a live goal-vs-progress bar.
 
 ## 🧱 Tech stack
 
-- **Client:** HTML5, CSS3 (custom design system), vanilla JavaScript (DOM + Promises + `fetch`) — no frameworks.
+- **Client:** HTML5, CSS3 (hand-written design system), vanilla JavaScript (DOM + Promises + `fetch`) — **no CSS/JS frameworks and no external assets**: system fonts only, so every page is 100% self-contained and works offline.
 - **Server:** Node.js + Express (RESTful API).
 - **Database:** MySQL (`charityevents_db`) accessed through a `mysql2/promise` connection pool.
 
@@ -143,3 +143,7 @@ GET http://localhost:3000/api/events?category=1&location=Broadbeach&date=2026-10
 - Emberlight Foundation is a **fictional** charity created for this assessment.
 - Ticket purchase (POST endpoints) is intentionally out of scope and will be
   added in **Assessment 3**.
+- **No frameworks and no external dependencies.** The client uses only HTML, CSS
+  and vanilla JavaScript (no CDNs, no web fonts); the server uses Express for
+  routing plus the `mysql2` MySQL driver, with no template engine (all responses
+  are JSON). The homepage torch is a static illustration.

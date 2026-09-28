@@ -42,10 +42,10 @@
     --ok: #3ecf8e;
     --danger: #ff5470;
 
-    /* -- type -- */
-    --font-display: 'Archivo Black', 'Arial Black', system-ui, sans-serif;
-    --font-head: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
-    --font-body: 'Barlow', 'Segoe UI', system-ui, sans-serif;
+    /* -- type -- (100% system fonts: no web-font download, works fully offline) -- */
+    --font-display: 'Arial Black', Impact, 'Segoe UI', system-ui, sans-serif;
+    --font-head: 'Arial Narrow', 'Segoe UI Semibold', 'Segoe UI', system-ui, sans-serif;
+    --font-body: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
 
     /* -- layout -- */
     --container: 1180px;
@@ -159,9 +159,9 @@ h1, h2, h3, h4 { line-height: 1.1; margin: 0 0 0.5em; }
 
 .brand { display: flex; align-items: center; gap: 0.7rem; }
 
-/* Small animated flame mark next to the wordmark. */
+/* Static flame mark next to the wordmark (kept calm, no flicker animation). */
 .brand-mark { width: 30px; height: 30px; }
-.brand-mark .flame-core { animation: flicker 2.4s ease-in-out infinite; transform-origin: 50% 100%; }
+.brand-mark .flame-core { transform-origin: 50% 100%; }
 
 .brand-name {
     font-family: var(--font-display);
@@ -291,25 +291,10 @@ h1, h2, h3, h4 { line-height: 1.1; margin: 0 0 0.5em; }
     opacity: 0.9;
     pointer-events: none;
 }
-.hero__art .torch-flame { animation: flicker 2.2s ease-in-out infinite; transform-origin: 50% 100%; }
-.hero__art .torch-inner { animation: flicker 1.7s ease-in-out infinite reverse; transform-origin: 50% 100%; }
-
-/* Floating ember particles rising from the torch. */
-.embers { position: absolute; inset: 0; pointer-events: none; }
-.ember {
-    position: absolute; bottom: 8%;
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 12px 4px rgba(255, 150, 40, 0.6);
-    opacity: 0;
-    animation: rise 5s linear infinite;
-}
-.ember:nth-child(1) { left: 18%; animation-delay: 0s; }
-.ember:nth-child(2) { left: 34%; animation-delay: 1.3s; width: 4px; height: 4px; }
-.ember:nth-child(3) { left: 52%; animation-delay: 2.1s; }
-.ember:nth-child(4) { left: 66%; animation-delay: 0.7s; width: 3px; height: 3px; }
-.ember:nth-child(5) { left: 80%; animation-delay: 2.9s; }
-.ember:nth-child(6) { left: 26%; animation-delay: 3.5s; width: 5px; height: 5px; }
+/* The hero torch is a STATIC illustration: the flicker animation and the
+   rising ember particles were removed so the flame never moves. */
+.hero__art .torch-flame,
+.hero__art .torch-inner { transform-origin: 50% 100%; }
 
 /* ----------------------------------------------------------------------------
    6. Sections + typography helpers
@@ -674,12 +659,6 @@ select.form-control { cursor: pointer; }
     25% { transform: scaleY(1.12) scaleX(0.94) rotate(2deg); }
     50% { transform: scaleY(0.92) scaleX(1.06) rotate(-1deg); }
     75% { transform: scaleY(1.08) scaleX(0.96) rotate(1.5deg); }
-}
-
-@keyframes rise { /* embers drifting up and fading */
-    0% { transform: translateY(0) translateX(0); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateY(-340px) translateX(18px); opacity: 0; }
 }
 
 @keyframes bob {
