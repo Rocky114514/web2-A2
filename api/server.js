@@ -6,14 +6,6 @@
  *
  *  This Express server exposes the data layer (MySQL) to the client-side
  *  website through a small set of read-only, resource-oriented endpoints.
- *  Only GET methods are implemented — POST/PUT/DELETE arrive in Assessment 3.
- *
- *  Endpoints:
- *    GET /api/events/home   -> active + upcoming events for the home page
- *    GET /api/events        -> searchable events (category, location, date)
- *    GET /api/events/:id    -> full detail for a single event
- *    GET /api/categories    -> the event categories used by the filter form
- *    GET /api/locations     -> distinct venues used by the filter form
  * ============================================================================
  */
 

@@ -1,17 +1,6 @@
 -- ============================================================================
 --  PROG2002 Assessment 2 — Charity Events Platform
---  Database schema + seed data  :  charityevents_db
---
---  Purpose:
---    This script creates the MySQL database that powers the "Passing the
---    Torch" charity-events website. It models the three core entities from
---    the case study (charitable organisations, event categories, and charity
---    events) and adds a registrations table that Assessment 3 will extend.
---
---  How to run (MySQL 8+ / MySQL Workbench):
---    mysql -u root -p < charityevents_db.sql
---
---  Design notes (see project-report.md for the full rationale):
+--  Design notes :
 --    * Every table uses an auto-increment surrogate primary key.
 --    * events references organisations and categories with foreign keys so
 --      referential integrity is enforced at the database level.
@@ -112,11 +101,11 @@ CREATE TABLE registrations (
     CONSTRAINT fk_registrations_event FOREIGN KEY (event_id) REFERENCES events(event_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- ============================================================================
+-- ***
 --  SEED DATA
 --  Event dates use DATE_ADD/DATE_SUB with CURDATE() so "past" and "upcoming"
 --  are always correct no matter when the script is imported.
--- ============================================================================
+-- ***
 
 -- ---- Organisations ---------------------------------------------------------
 INSERT INTO organisations

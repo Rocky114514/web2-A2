@@ -5,11 +5,6 @@
  *  This module is the ONLY place that talks to MySQL. Every API endpoint in
  *  server.js imports the pool from here, which keeps database credentials
  *  in one file and makes the connection reusable across requests.
- *
- *  Why a connection *pool* (not a single connection)?
- *    A pool keeps several connections open and hands them out on demand.
- *    It handles many simultaneous browser requests far more efficiently than
- *    opening and closing a brand-new connection for every single request.
  * ============================================================================
  */
 
